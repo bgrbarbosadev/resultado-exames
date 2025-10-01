@@ -1,0 +1,84 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: ms-gateway
+  security:
+    jwt:
+      secret: ${JWT_SECRET}
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/ms-oauth/outh2/token
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # Rota gen�rica para MS-CUSTOMER
+            - id: ms-customer-all
+              uri: lb://ms-customer
+              predicates:
+                - Path=/ms-customer/customer/**
+              filters:
+                - StripPrefix=1
+            # Rota gen�rica para MS-EXAM
+            - id: ms-exam-all
+              uri: lb://ms-exam
+              predicates:
+                - Path=/ms-exam/**
+              filters:
+                - StripPrefix=1
+            # Rota gen�rica para MS-SCHEDULING
+            - id: ms-scheduling-all
+              uri: lb://ms-scheduling
+              predicates:
+                - Path=/ms-scheduling/**
+              filters:
+                - StripPrefix=1
+            # Rota gen�rica para MS-NOTIFICATION
+            - id: ms-notification-all
+              uri: lb://ms-notification
+              predicates:
+                - Path=/ms-notification/**
+              filters:
+                - StripPrefix=1
+            # Rota gen�rica para MS-USER
+            - id: ms-user-all
+              uri: lb://ms-user
+              predicates:
+                - Path=/ms-user/**
+              filters:
+                - StripPrefix=1
+            # Rota gen�rica para MS-OAUTH
+            - id: ms-oauth-all
+              uri: lb://ms-oauth
+              predicates:
+                - Path=/ms-oauth/**
+              filters:
+                - StripPrefix=1
+    config:
+      import-check:
+        enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+  pattern:
+    console: '%clr(%d{dd-MM-yyyy HH:mm:ss}){faint} %clr(%5p) %clr([%t]){faint} %clr(%-40.40logger){cyan} %clr(:){yellow} %m%n'
+  file:
+    name: app.log
+
+eureka:
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${URL_SERVICE_DISCOVERY:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+    hostname: ms-registry
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
