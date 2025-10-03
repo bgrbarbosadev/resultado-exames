@@ -39,11 +39,14 @@ logging:
 
 #Configuração do Eureka
 eureka:
-  instance:
-    prefer-ip-address: true
-    hostname: ms-registry
-    non-secure-port: ${server.port}
   client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: ${URL_SERVICE_DISCOVERY:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+    hostname: ms-user
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 

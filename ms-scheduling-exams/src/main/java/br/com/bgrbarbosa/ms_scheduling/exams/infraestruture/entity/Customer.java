@@ -1,6 +1,5 @@
 package br.com.bgrbarbosa.ms_scheduling.exams.infraestruture.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,45 +23,34 @@ public class Customer {
     private String name;
 
     @Column
-    @JsonIgnore
     private String cpf;
 
     @Column
-    @JsonIgnore
     private String email;
 
     @Column
-    @JsonIgnore
     private String tel;
 
     @Column
-    @JsonIgnore
     private String cel;
 
     @Column
-    @JsonIgnore
     private String address;
 
     @Column
-    @JsonIgnore
     private String neighborhood;
 
     @Column
-    @JsonIgnore
     private String city;
 
     @Column
-    @JsonIgnore
     private String state;
 
     @Column
-    @JsonIgnore
     private String cep;
 
-    @JsonIgnore
     private LocalDate date_insert;
 
-    @JsonIgnore
     private LocalDate date_update;
 
     @PrePersist

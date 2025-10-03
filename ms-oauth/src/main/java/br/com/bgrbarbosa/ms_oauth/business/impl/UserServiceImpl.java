@@ -6,6 +6,7 @@ import br.com.bgrbarbosa.ms_oauth.infraestruture.entity.UserDTO;
 import br.com.bgrbarbosa.ms_oauth.infraestruture.entity.UserRequestDTO;
 import br.com.bgrbarbosa.ms_oauth.infraestruture.exception.UsernameNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,7 +20,8 @@ import org.springframework.web.client.RestTemplate;
 public class UserServiceImpl{
 
     private final RestTemplate restTemplate;
-    private final String URL_SEARCH_USER= "http://localhost:8080/ms-user/user/login";
+
+    private final String URL_SEARCH_USER = "http://MS-GATEWAY/ms-user/user/login";
 
     public UserDTO findByEmail(UserRequestDTO dto) {
 

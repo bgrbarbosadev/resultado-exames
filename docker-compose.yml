@@ -1,0 +1,259 @@
+networks:
+  my-network:
+    driver: bridge
+
+services:
+
+################################################# Serviço do rabbitmq #############################################################
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ms-rabbitmq
+    hostname: ms-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - my-network
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Persistir dados do RabbitMQ
+
+################################################# Serviço do Registry #############################################################    
+  ms-discovery:
+    build:
+      context: .
+      dockerfile: ./ms-registry/Dockerfile
+    container_name: ms-registry
+    ports:
+      - 8761:8761
+    networks:
+      - my-network
+    restart: always
+ 
+################################################# Serviço do Gateway #############################################################    
+  ms-gateway:
+    build:
+      context: .
+      dockerfile: ./ms-gateway/Dockerfile
+    container_name: ms-gateway
+    ports:
+      - 8080:8080
+    environment:
+      - JWT_SECRET=MinhaChaveSecretaParaOProjetoDe2025!@123
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+    networks:
+      - my-network
+    restart: always
+
+################################################# Serviço do oauth #############################################################
+  ms-oauth:
+    build:
+      context: .
+      dockerfile: ./ms-oauth/Dockerfile
+    container_name: ms-oauth
+    environment:
+      - JWT_SECRET=MinhaChaveSecretaParaOProjetoDe2025!@123
+      - URL_SERVICE_DISCOVERY=http://ms-discovery:8761/eureka
+    networks:
+      - my-network
+    restart: always
+
+  ################################################# Serviço do ms-user #############################################################
+  user-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: user-db
+    ports:
+      - 5433:5432
+    expose:
+      - 5432
+    networks:
+      - my-network
+    volumes:
+      - ms_user_data:/var/lib/ms_user
+
+  ms-user:
+    build:
+      context: .
+      dockerfile: ./ms-user/Dockerfile
+    container_name: ms-user
+    environment:
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+      - DATASOURCE_URL=jdbc:postgresql://user-db:5432/user-db
+      - DATASOURCE_USERNAME=postgres
+      - DATASOURCE_PASSWORD=123456
+    networks:
+      - my-network
+    restart: always
+
+################################################# Serviço do ms-scheduling #############################################################
+  scheduling-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: scheduling-db
+    ports:
+      - 5434:5432
+    expose:
+      - 5432
+    networks:
+      - my-network
+    volumes:
+      - ms_scheduling_data:/var/lib/ms_scheduling
+
+  ms-scheduling:
+    build:
+      context: .
+      dockerfile: ./ms-scheduling-exams/Dockerfile
+    container_name: ms-scheduling-exams
+    environment:
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+      - DATASOURCE_URL=jdbc:postgresql://scheduling-db:5432/scheduling-db
+      - DATASOURCE_USERNAME=postgres
+      - DATASOURCE_PASSWORD=123456
+      - RABBIT_MQ_HOST=ms-rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - AWS_KEY_ACCESS=${AWS_KEY_ACCESS}
+      - AWS_SECRET_KEY=${AWS_SECRET_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_BUCKET=${AWS_BUCKET}
+    networks:
+      - my-network
+    depends_on:
+      - rabbitmq
+    restart: always
+
+  ################################################# Serviço do ms-customer #############################################################
+  customer-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: customer-db
+    ports:
+      - 5435:5432
+    expose:
+      - 5432
+    networks:
+      - my-network
+    volumes:
+      - ms_customer_data:/var/lib/ms_customer
+
+  ms-customer:
+    build:
+      context: .
+      dockerfile: ./ms-customer/Dockerfile
+    container_name: ms-customer
+    environment:
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+      - DATASOURCE_URL=jdbc:postgresql://customer-db:5432/customer-db
+      - DATASOURCE_USERNAME=postgres
+      - DATASOURCE_PASSWORD=123456
+      - RABBIT_MQ_HOST=ms-rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - AWS_KEY_ACCESS=${AWS_KEY_ACCESS}
+      - AWS_SECRET_KEY=${AWS_SECRET_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_BUCKET=${AWS_BUCKET}
+    networks:
+      - my-network
+    restart: always
+
+################################################# Serviço do ms-exame #############################################################
+  exame-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DATABASE: exame-db
+    ports:
+      - 5436:5432
+    expose:
+      - 5432
+    networks:
+      - my-network
+    volumes:
+      - ms_customer_data:/var/lib/ms_customer
+
+  ms-exame:
+    build:
+      context: .
+      dockerfile: ./ms-exame/Dockerfile
+    container_name: ms-exame
+    environment:
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+      - DATASOURCE_URL=jdbc:postgresql://exame-db:5432/exame-db
+      - DATASOURCE_USERNAME=postgres
+      - DATASOURCE_PASSWORD=123456
+      - RABBIT_MQ_HOST=ms-rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+    networks:
+      - my-network
+    restart: always
+
+
+################################################# Serviço do ms-notification #############################################################
+  notification-db:
+    image: mongo:latest
+    container_name: mongodb_notification
+    ports:
+      - "27017:27017"
+    expose:
+      - 27017
+    networks:
+      - my-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user_admin_mongodb
+      MONGO_INITDB_ROOT_PASSWORD: password_admin_mongodb
+      MONGO_INITDB_DATABASE: notification-db
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  ms-notification:
+    build:
+      context: .
+      dockerfile: ./ms-notification/Dockerfile
+    container_name: ms-notification
+    environment:
+      - MONGO_HOST=notification-db
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=notification-db
+      - MONGO_USERNAME=user_admin_mongodb
+      - MONGO_PASSWORD=password_admin_mongodb
+      - RABBIT_MQ_HOST=ms-rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USERNAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - HOST_MAIL=${HOST_MAIL}
+      - PORT=${PORT}
+      - HOST_USERNAME=${HOST_USERNAME}
+      - HOST_PASSWORD=${HOST_PASSWORD}
+      - URL_SERVICE_DISCOVERY=http://ms-registry:8761/eureka
+    networks:
+      - my-network
+    restart: always
+
+######################################################## Volumes usados nos dockers ##############################################
+volumes:
+  ms_user_data:
+  ms_scheduling_data:
+  ms_customer_data:
+  ms_exame_data:
+  mongodb_data:
+  rabbitmq_data:

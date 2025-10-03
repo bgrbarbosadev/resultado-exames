@@ -22,10 +22,8 @@ public class Exam {
     private String descExam;
 
     @Column
-    @JsonIgnore
     private Double vlExame;
 
     @Column
-    @JsonIgnore
     private String orientationExam;
 }
