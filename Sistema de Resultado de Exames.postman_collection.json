@@ -1,0 +1,1457 @@
+{
+	"info": {
+		"_postman_id": "fbe84065-4b79-4020-8cea-7a2c9e87c24f",
+		"name": "Sistema de Resultado de Exames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16803873"
+	},
+	"item": [
+		{
+			"name": "ms-exames",
+			"item": [
+				{
+					"name": "Exam-Type",
+					"item": [
+						{
+							"name": "findAllExameType",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9ST0xFX1VTRVIifV0sImV4cCI6MTc1OTI3MjIxNX0.DMd9X5ug45zt7MCzTgQlnRrolZjNaG6xt3I2MyPY0pw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/type",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByIdExamType",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/type/a2160d78-c346-46b3-908c-7b89e9f1da85",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"type",
+										"a2160d78-c346-46b3-908c-7b89e9f1da85"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insertExamType",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descExame\": \"hemograma completo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/type",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateExamType",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codExamType\": \"a2160d78-c346-46b3-908c-7b89e9f1da85\",\r\n    \"descExame\": \"EXAME DE SANGUE - alterado\",\r\n    \"exams\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/type",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteExamType",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/type/a2160d78-c346-46b3-908c-7b89e9f1da85",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"type",
+										"a2160d78-c346-46b3-908c-7b89e9f1da85"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Exam",
+					"item": [
+						{
+							"name": "findAllExame",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/exam",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"exam"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByIdExam",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/exam/19b44496-406e-4355-8921-65a5be8c86da",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"exam",
+										"19b44496-406e-4355-8921-65a5be8c86da"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insertExam",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descExam\": \"Teste de deleção\",\r\n    \"vlExame\": 20.00,\r\n    \"orientationExam\": \"Não é necessário jejum\",\r\n    \"examType\": {\r\n        \"codExamType\": \"ab50001e-b8b3-49ea-8cca-9e23c65d0e7c\"\r\n    }\r\n}\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/exam",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"exam"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateExam",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codExam\": \"19b44496-406e-4355-8921-65a5be8c86da\",\r\n    \"descExam\": \"GLICEMIA\",\r\n    \"vlExame\": \"R$ 20,00\",\r\n    \"orientationExam\": \"SEM RESTRIÇÕES\",\r\n    \"examType\": {\r\n        \"codExamType\": \"ab50001e-b8b3-49ea-8cca-9e23c65d0e7c\",\r\n        \"descExame\": \"EXAME DE SANGUE\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/exam",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"exam"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteExam",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-exam/exam/a9128d23-4300-4690-8c57-a36b27a65eb1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-exam",
+										"exam",
+										"a9128d23-4300-4690-8c57-a36b27a65eb1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ms-customer",
+			"item": [
+				{
+					"name": "findAllCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-customer/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-customer",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByIdCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-customer/customer/65e6a7fc-b588-486a-b780-f02ea385b17e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-customer",
+								"customer",
+								"65e6a7fc-b588-486a-b780-f02ea385b17e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bruno Gaspar Romeiro Barbosa - teste\",\r\n    \"cpf\": \"10823410706\",\r\n    \"email\": \"bgrbarbosa@hotmail.com\",\r\n    \"tel\": \"2424526455\",\r\n    \"cel\": \"24988549631\",\r\n    \"address\": \"Rua Maria jovita de jesus 71\",\r\n    \"neighborhood\": \"cambota\",\r\n    \"city\": \"valença\",\r\n    \"state\": \"rj\",\r\n    \"cep\": \"27600000\"\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-customer/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-customer",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExam Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"codCustomer\": \"5e414575-e017-456b-84c7-732d0cbad7a3\",\r\n            \"name\": \"BRUNO GASPAR ROMEIRO BARBOSA - TESTE\",\r\n            \"cpf\": \"10823410706\",\r\n            \"email\": \"BGRBARBOSA@HOTMAIL.COM\",\r\n            \"tel\": \"2424526455\",\r\n            \"cel\": \"24988549631\",\r\n            \"address\": \"RUA MARIA JOVITA DE JESUS 71\",\r\n            \"neighborhood\": \"CAMBOTA\",\r\n            \"city\": \"VALENÇA\",\r\n            \"state\": \"RJ\",\r\n            \"cep\": \"27600000\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-customer/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-customer",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteExam Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-customer/customer/a7ae48a3-13d4-4491-ace6-b67ea018d18b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-customer",
+								"customer",
+								"a7ae48a3-13d4-4491-ace6-b67ea018d18b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-scheduling",
+			"item": [
+				{
+					"name": "Laudos",
+					"item": [
+						{
+							"name": "Upload Arquivo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1f09acfb-540d-4c80-99f2-813e74e091ef"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-scheduling/exam-result/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-scheduling",
+										"exam-result",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download Arquivo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_access}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-scheduling/exam-result/download/dicas de api.docx",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-scheduling",
+										"exam-result",
+										"download",
+										"dicas de api.docx"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "findAllScheduling",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByIdScheduling",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/19b44496-406e-4355-8921-65a5be8c86da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"19b44496-406e-4355-8921-65a5be8c86da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findExamsByScheduling",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/exams/19b44496-406e-4355-8921-65a5be8c86da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"exams",
+								"19b44496-406e-4355-8921-65a5be8c86da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findCustomerByScheduling",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/customer/c6255701-f267-49b5-a39c-f88763260622",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"customer",
+								"c6255701-f267-49b5-a39c-f88763260622"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertSchedulingExame",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vlExam\": 50.0,\r\n    \"date_exam\": \"2025-11-17\",\r\n    \"date_result\": \"2025-11-18\",\r\n    \"customer\"  : {\r\n        \"codCustomer\": \"b1c9b5d6-5ff6-448d-8497-30c42946108e\"        \r\n    },\r\n    \"examList\": [\r\n        {\r\n            \"codExam\": \"ec591045-235a-472b-bbc2-a27714b2488f\"\r\n        }\r\n        \r\n    ]\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarSchedulingExame",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"protocol\": 1758810651859897,\r\n    \"password\": \"z29HjxDttK\",\r\n    \"cpf\": \"10823410705\"\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/result",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"result"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "1758810651859897",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "z29HjxDttK",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExam Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codScheduling\": \"dd66a849-1848-4859-ac3f-1ce54ddc6f8c\",\r\n    \"status\": \"OPEN\",\r\n    \"vlExam\": 50.0,\r\n    \"protocol\": 1759178706807684,\r\n    \"password\": \"cuQslGtADD\",\r\n    \"date_exam\": \"2025-11-17\",\r\n    \"date_result\": \"2025-11-18\",\r\n    \"url_laudo\": \"https://s3-exam-result.s3.us-east-1.amazonaws.com/dicas%20de%20api.docx\",\r\n    \"customer\": {\r\n        \"codCustomer\": \"c4868544-b413-4fc5-834a-6d80851a2034\",\r\n        \"name\": null\r\n    },\r\n    \"examList\": [\r\n        {\r\n            \"codExam\": \"11565c3a-12ff-40fb-9633-c0f6dce20bff\",\r\n            \"descExam\": null\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStatusExam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codScheduling\": \"868cc480-d787-4d51-aae1-a6775bad35b1\",\r\n    \"status\": \"FINISH\",\r\n    \"url_laudo\": \"https://s3-exam-result.s3.us-east-1.amazonaws.com/dicas%20de%20api.docx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteExam Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-scheduling/scheduling/c08f9652-5dfc-48f7-81bf-9bd925706e54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-scheduling",
+								"scheduling",
+								"c08f9652-5dfc-48f7-81bf-9bd925706e54"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "Enviar Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_access}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-notification/notification/re-send/b559451e-e5ec-44c9-97bc-e7749253abbe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-notification",
+								"notification",
+								"re-send",
+								"b559451e-e5ec-44c9-97bc-e7749253abbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByIdNotification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-notification/notification/ab76697b-7e61-4bca-bdee-fc60276abe3a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-notification",
+								"notification",
+								"ab76697b-7e61-4bca-bdee-fc60276abe3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ms-notification/notification",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-notification",
+								"notification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-user",
+			"item": [
+				{
+					"name": "role",
+					"item": [
+						{
+							"name": "findAllRole",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByIdRole",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/role/26fc4c67-3e43-4aa3-9d5b-2346a3f31c3e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"role",
+										"26fc4c67-3e43-4aa3-9d5b-2346a3f31c3e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insertRole",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role\": \"ROLE_USER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-user/role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateRole",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idRole\": 3,\r\n    \"role\": \"ROLE_SEM_ACESSO_ALTERADA\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-user/role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteRole",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/role/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"role",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "findAllUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6ImJncmJhcmJvc2FAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkzNDUxNzB9.OXgIAn-8VjAYVA3ncn_UFGuIUyYboHQ3xsq2cDARAVk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByIdUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByUserLogin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"bgrbarbosa@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insertUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"JOAO\",\r\n    \"lastName\": \"BARBOSA\",\r\n    \"email\": \"user@hotmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\": [\r\n        {\r\n            \"idRole\": 2,\r\n            \"role\": \"ROLE_USER\"   \r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idUser\": 1,\r\n    \"firstName\": \"BRUNO\",\r\n    \"lastName\": \"BARBOSA\",\r\n    \"email\": \"bgrbarbosa@hotmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\": [\r\n        {\r\n            \"idRole\": 1,\r\n            \"role\": \"ROLE_ADMIN\"\r\n        },\r\n        {\r\n            \"idRole\": 2,\r\n            \"role\": \"ROLE_USER\"   \r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteRole Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiV2xqY205elpYSjJhV052TFdGMWRHaGxiblJwWTJGMCIsInN1YiI6InVzZXJAaG90bWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJleHAiOjE3NTkyNzQ2NTl9.I81NosSXMcqsDZAT6juVOUOE8pH5bnW4_ozEKyiB9XE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/ms-user/user/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ms-user",
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ms-oauth",
+			"item": [
+				{
+					"name": "obter token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bgrbarbosa@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-oauth/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-oauth",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bgrbarbosa@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ms-user/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ms-user",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token_access",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
