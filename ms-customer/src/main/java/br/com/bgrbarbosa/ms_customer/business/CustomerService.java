@@ -14,7 +14,7 @@ public interface CustomerService {
 
     Customer findById(UUID uuid);
 
-    void delete(UUID uuid);
+    void delete(UUID uuid) throws Exception;
 
     Customer update(Customer entity) throws Exception;
 }

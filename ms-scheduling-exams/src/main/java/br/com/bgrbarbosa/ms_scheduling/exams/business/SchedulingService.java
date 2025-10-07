@@ -20,4 +20,8 @@ public interface SchedulingService {
 
     Scheduling findByExamProtocol(Long protocol, String password, String cpf);
 
+    Boolean existsExamsByScheduling(UUID uuid);
+
+    Boolean existsCustomerByScheduling(UUID uuid);
+
 }

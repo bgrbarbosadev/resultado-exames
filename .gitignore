@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Excluir variáveis de ambiente
+*.env
+
 # Log file
 *.log
 

@@ -55,20 +55,18 @@ public class ConsumerExamService {
         }
     }
 
-//    @RabbitListener(bindings = @QueueBinding(
-//            value = @Queue(value = "queue-customer-deleted"),
-//            exchange = @Exchange(value = "exchange-customer-scheduling"),
-//            key = "customer-deleted" // Routing key
-//    ))
-//    public void deleteCustomer(@Payload String idString){
-//        String cleanIdString = idString.replace("\"", "");
-//        UUID id = UUID.fromString(cleanIdString);
-//        try {
-//            log.info("Attempting to delete customer with UUID: {}", id);
-//            customerRepository.deleteById(id);
-//            log.info("Customer with UUID {} deleted successfully.", id);
-//        }catch (Exception e){
-//            log.error("Error deleting customer with UUID {}: {}", id, e.getMessage());
-//        }
-//    }
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(value = "queue-exam-delete"),
+            exchange = @Exchange(value = "exchange-exam-scheduling", type = ExchangeTypes.DIRECT),
+            key = "exam-delete"))
+    public void deleteExam(@Payload String payload){
+        try {
+            var mapper = new ObjectMapper();
+            Exam data = mapper.readValue(payload, Exam.class);
+            examRepository.deleteById(data.getCodExam());
+
+        }catch (Exception e){
+            log.error("Error receiving data from {}", e.getMessage());
+        }
+    }
 }

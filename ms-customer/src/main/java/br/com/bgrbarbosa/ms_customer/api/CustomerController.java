@@ -128,7 +128,7 @@ public class CustomerController {
                     @ApiResponse(responseCode = "404", description = "Tipo de exame não encontrado não encontrada",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResourceNotFoundException.class)))
             })
-    public ResponseEntity<Void> delete(@PathVariable UUID uuid) {
+    public ResponseEntity<Void> delete(@PathVariable UUID uuid) throws Exception {
         service.delete(uuid);
         return ResponseEntity.noContent().build();
     }

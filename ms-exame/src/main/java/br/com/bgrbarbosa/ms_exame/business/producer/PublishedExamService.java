@@ -21,7 +21,7 @@ public class PublishedExamService {
 
     private final String examUpdateRoutingKey = "exam-update";
 
-    private String examDeletedRoutingKey = "exam-deleted";
+    private String examDeletedRoutingKey = "exam-delete";
 
     public void createExam(Exam entity) throws JsonProcessingException {
         var json = convertIntoJson(entity);
@@ -33,8 +33,8 @@ public class PublishedExamService {
         rabbitTemplate.convertAndSend(examExchange, examUpdateRoutingKey, json);
     }
 
-    public void deleteExam(UUID uuid) throws JsonProcessingException {
-        var json = convertIntoJson(uuid);
+    public void deleteExam(Exam entity) throws JsonProcessingException {
+        var json = convertIntoJson(entity);
         rabbitTemplate.convertAndSend(examExchange, examDeletedRoutingKey, json);
     }
 
@@ -43,8 +43,4 @@ public class PublishedExamService {
         return mapper.writeValueAsString(entity);
     }
 
-    private String convertIntoJson(UUID uuid) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(uuid);
-    }
 }

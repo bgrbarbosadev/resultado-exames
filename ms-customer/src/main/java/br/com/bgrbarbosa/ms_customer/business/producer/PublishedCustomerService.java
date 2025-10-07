@@ -21,7 +21,7 @@ public class PublishedCustomerService {
 
     private final String customerUpdateRoutingKey = "customer-update";
 
-    private String customerDeletedRoutingKey = "customer-deleted";
+    private String customerDeletedRoutingKey = "customer-delete";
 
     public void createCustomer(Customer entity) throws JsonProcessingException {
         var json = convertIntoJson(entity);
@@ -33,8 +33,8 @@ public class PublishedCustomerService {
         rabbitTemplate.convertAndSend(customerExchange, customerUpdateRoutingKey, json);
     }
 
-    public void deleteCustomer(UUID uuid) throws JsonProcessingException {
-        var json = convertIntoJson(uuid);
+    public void deleteCustomer(Customer customer) throws JsonProcessingException {
+        var json = convertIntoJson(customer);
         rabbitTemplate.convertAndSend(customerExchange, customerDeletedRoutingKey, json);
     }
 
@@ -43,8 +43,4 @@ public class PublishedCustomerService {
         return mapper.writeValueAsString(entity);
     }
 
-    private String convertIntoJson(UUID uuid) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(uuid);
-    }
 }

@@ -98,6 +98,16 @@ public class SchedulingServiceImpl implements SchedulingService {
         }
     }
 
+    @Override
+    public Boolean existsExamsByScheduling(UUID uuid) {
+        return repository.existsByExamList_CodExam(uuid);
+    }
+
+    @Override
+    public Boolean existsCustomerByScheduling(UUID uuid) {
+        return repository.existsByCustomer_CodCustomer(uuid);
+    }
+
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "queue-notification"),
             exchange = @Exchange(value = "exchange-exam-scheduling", type = ExchangeTypes.DIRECT),

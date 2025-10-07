@@ -29,6 +29,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.security.auth.login.LoginException;
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @RestController
@@ -67,6 +68,32 @@ public class SchedulingController {
     public ResponseEntity<SchedulingResponseDTO> findById(@PathVariable UUID uuid) {
         SchedulingResponseDTO dto = mapper.parseToResponseDto(service.findById(uuid));
         return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping(value = "/exams/{uuid}")
+    @Operation(summary = "Verificar se existe scheduling com exame com uuid", description = "Verificar se existe scheduling com exame com uuid",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Existe scheduling com o exame informado - true",
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Boolean.class))),
+                    @ApiResponse(responseCode = "200", description = "Não existe scheduling com o exame informado - false",
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Boolean.class))),
+            })
+    public ResponseEntity<Boolean> findExamsByScheduling(@PathVariable UUID uuid) {
+        Boolean aux = service.existsExamsByScheduling(uuid);
+        return ResponseEntity.ok().body(aux);
+    }
+
+    @GetMapping(value = "/customer/{uuid}")
+    @Operation(summary = "Verificar se existe scheduling com customer com uuid", description = "Verificar se existe scheduling com customer com uuid",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Existe scheduling com o customer informado - true",
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Boolean.class))),
+                    @ApiResponse(responseCode = "200", description = "Não existe scheduling com o customer informado - false",
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Boolean.class))),
+            })
+    public ResponseEntity<Boolean> findCustomerByScheduling(@PathVariable UUID uuid) {
+        Boolean aux = service.existsCustomerByScheduling(uuid);
+        return ResponseEntity.ok().body(aux);
     }
 
     @PostMapping

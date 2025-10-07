@@ -19,7 +19,8 @@ public class Messages {
     public static final String ENTITY_EXCEPTION = "Error Gateway";
     public static final String ERROR_INSERTING_RECORD = "Error Inserting Record: ";
     public static final String ERROR_DELETION_RECORD = "Error Inserting Record: ";
-    public static final String Existing_User = "Existing User in the Database";
-    public static final String USER_NOT_EXISTS = "User not exists";
+    public static final String EXISTING_USER = "Existing User in the Database";
+    public static final String EXISTING_EXAM = "Exam used in another record";
+    public static final String EXISTING_CUSTOMER = "Customer used in another record";
     public static final String ERROR_WHILE_AUTHENTICATION = "Error while authenticating";
 }

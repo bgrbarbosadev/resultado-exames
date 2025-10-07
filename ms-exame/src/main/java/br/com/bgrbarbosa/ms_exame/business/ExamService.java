@@ -15,7 +15,7 @@ public interface ExamService {
 
     Exam findById(UUID uuid);
 
-    void delete(UUID uuid);
+    void delete(UUID uuid) throws Exception;
 
     Exam update(Exam entity) throws Exception;
 }
